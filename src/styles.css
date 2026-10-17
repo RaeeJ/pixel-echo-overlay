@@ -7,6 +7,7 @@
 @theme inline {
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   --font-script: "Great Vibes", cursive;
+  --font-lovely: "Lovely May Script", "Great Vibes", cursive;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -67,6 +68,12 @@
     radial-gradient(900px 500px at 0% 40%, oklch(0.35 0.1 225 / 0.25), transparent 60%);
   --shadow-glow: 0 0 0 1px oklch(0.82 0.15 205 / 0.5), 0 20px 50px -20px oklch(0.82 0.15 205 / 0.45);
   --shadow-soft: 0 20px 40px -24px oklch(0 0 0 / 0.8);
+}
+
+@font-face {
+  font-family: "Lovely May Script";
+  src: url("/__l5e/assets-v1/1bb41cd7-660c-4d4e-8891-0bb6de1c67dc/lovely-may-script.otf") format("opentype");
+  font-display: swap;
 }
 
 @layer base {

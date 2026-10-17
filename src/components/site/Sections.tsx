@@ -1,5 +1,5 @@
 import { BookOpen, ClipboardList, FileQuestion, FolderOpen, Award, LayoutGrid, MonitorSmartphone, GraduationCap, LineChart, Laptop, Headset, Clock, Briefcase, PlayCircle } from "lucide-react";
-import heroAsset from "@/assets/hero.png.asset.json";
+import heroAsset from "@/assets/hero-clean.png.asset.json";
 import desk from "@/assets/desk.jpg";
 import { CtaLink, IconBadge, PulseIcon, Reveal } from "./primitives";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -13,13 +13,18 @@ export function Hero() {
   ];
   return (
     <section id="home" className="relative overflow-hidden border-b border-primary/20">
-      <div className="relative">
-        <img src={heroAsset.url} alt="Your future in healthcare starts here — healthcare professional in navy scrubs with stethoscope and tablet" className="h-auto w-full min-h-[340px] object-cover object-[70%_center]" width={1400} height={788} />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background to-transparent" />
+      <div className="relative md:absolute md:inset-0">
+        <img src={heroAsset.url} alt="Healthcare professional in navy scrubs with stethoscope, tablet and course books" className="h-[300px] w-full object-cover object-[72%_center] sm:h-[380px] md:h-full" width={1400} height={788} />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-background to-transparent md:h-1/3" />
+        <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-background via-background/70 to-transparent md:block" />
       </div>
-      <div className="relative mx-auto -mt-16 max-w-7xl px-5 pb-14 md:-mt-28 lg:px-8">
-        <Reveal className="max-w-2xl">
-          <p className="text-base leading-relaxed text-foreground/90 md:text-lg">
+      <div className="relative mx-auto -mt-20 max-w-7xl px-5 pb-14 md:mt-0 md:pb-16 md:pt-36 lg:px-8 lg:pt-44">
+        <Reveal className="max-w-xl">
+          <h1 className="text-[2.1rem] font-extrabold uppercase leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+            Your Future in <span className="text-primary">Healthcare</span>
+            <span className="mt-1 block font-lovely text-[3.2rem] font-normal normal-case leading-none tracking-normal text-primary sm:text-7xl lg:text-8xl">Starts Here</span>
+          </h1>
+          <p className="mt-6 text-base leading-relaxed text-foreground/90 md:text-lg">
             Flexible online healthcare education designed to help you build knowledge, develop practical skills, and prepare for your next step in healthcare.
           </p>
           <div className="mt-7 flex flex-wrap gap-4">
