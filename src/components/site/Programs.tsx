@@ -1,5 +1,7 @@
 import { useRef } from "react";
-import { ArrowRight, ChevronLeft, ChevronRight, Stethoscope, Pill, Activity, RefreshCw, Cross, ShieldAlert, HeartPulse } from "lucide-react";
+import { ChevronLeft, ChevronRight, Stethoscope, Pill, Activity, RefreshCw, Cross, ShieldAlert, HeartPulse } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { CoursePopup } from "./CoursePopup";
 import cna from "@/assets/p-cna.jpg";
 import med from "@/assets/p-medtech.jpg";
 import ekg from "@/assets/p-ekg.jpg";
@@ -10,13 +12,13 @@ import cpr from "@/assets/p-cpr.jpg";
 import { CtaLink, IconBadge, Reveal } from "./primitives";
 
 const programs = [
-  { img: cna, Icon: Stethoscope, title: "CNA Prep Course", price: 119, desc: "Build foundational knowledge for nursing assistant training and prepare for your next step in healthcare." },
-  { img: med, Icon: Pill, title: "Medication Technician", price: 75, desc: "Explore medication safety, administration principles, and essential healthcare responsibilities." },
-  { img: ekg, Icon: Activity, title: "EKG Technician Prep Course", price: 130, desc: "Learn the fundamentals of electrocardiography and explore essential cardiac monitoring concepts." },
-  { img: ren, Icon: RefreshCw, title: "2-Hour Med Tech Renewal", price: 49, desc: "Refresh your medication technician knowledge through focused continuing education designed to support your professional development." },
-  { img: fa, Icon: Cross, title: "First Aid Certification", price: 60, desc: "Develop practical knowledge of first aid principles and learn how to respond to common emergencies." },
-  { img: bbp, Icon: ShieldAlert, title: "Bloodborne Pathogens / HIV", price: 30, desc: "Learn about bloodborne pathogen exposure, HIV awareness, infection prevention, and essential workplace safety practices." },
-  { img: cpr, Icon: HeartPulse, title: "Basic Life Support, CPR & AED Certification", price: 45, desc: "Explore lifesaving techniques, CPR fundamentals, and AED use to build confidence in responding to cardiac emergencies." },
+  { id: "cna", img: cna, Icon: Stethoscope, title: "CNA Prep Course", price: 119, desc: "Build foundational knowledge for nursing assistant training and prepare for your next step in healthcare." },
+  { id: "medtech", img: med, Icon: Pill, title: "6-Hour Med Tech Training", price: 75, desc: "Explore medication safety, administration principles, and essential healthcare responsibilities." },
+  { id: "ekg", img: ekg, Icon: Activity, title: "EKG Technician Prep Course", price: 130, desc: "Learn the fundamentals of electrocardiography and explore essential cardiac monitoring concepts." },
+  { id: "renewal", img: ren, Icon: RefreshCw, title: "2-Hour Med Tech Renewal", price: 49, desc: "Refresh your medication technician knowledge through focused continuing education designed to support your professional development." },
+  { id: "firstaid", img: fa, Icon: Cross, title: "First Aid Certification", price: 60, desc: "Develop practical knowledge of first aid principles and learn how to respond to common emergencies." },
+  { id: "bbp", img: bbp, Icon: ShieldAlert, title: "Bloodborne Pathogens / HIV", price: 30, desc: "Learn about bloodborne pathogen exposure, HIV awareness, infection prevention, and essential workplace safety practices." },
+  { id: "cpr", img: cpr, Icon: HeartPulse, title: "Basic Life Support, CPR & AED Certification", price: 45, desc: "Explore lifesaving techniques, CPR fundamentals, and AED use to build confidence in responding to cardiac emergencies." },
 ];
 
 function ProgramCard({ p }: { p: (typeof programs)[number] }) {
@@ -33,10 +35,7 @@ function ProgramCard({ p }: { p: (typeof programs)[number] }) {
       <div className="flex flex-1 flex-col px-5 pb-5 pt-3">
         <h3 className="text-lg font-bold uppercase leading-snug tracking-wide">{p.title}</h3>
         <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
-        <a href="#faq" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary after:absolute after:inset-0 focus-visible:outline-none">
-          Learn More <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-          <span className="sr-only">about {p.title}</span>
-        </a>
+        <CoursePopup id={p.id} title={p.title} price={p.price} description={p.desc} actionLabel={p.id === "firstaid" || p.id === "cpr" ? "Enroll Now" : "Learn More"}>{null}</CoursePopup>
       </div>
     </article>
   );
@@ -79,8 +78,8 @@ export function Programs() {
           ))}
         </div>
         <div className="mt-4 flex justify-center gap-3">
-          <button onClick={() => scroll(-1)} aria-label="Previous program" className="rounded-full border border-primary/50 p-3 text-primary active:scale-95"><ChevronLeft className="h-5 w-5" /></button>
-          <button onClick={() => scroll(1)} aria-label="Next program" className="rounded-full border border-primary/50 p-3 text-primary active:scale-95"><ChevronRight className="h-5 w-5" /></button>
+          <Button variant="outline" size="icon" onClick={() => scroll(-1)} aria-label="Previous program" className="h-11 w-11 rounded-full border-primary/50 text-primary active:scale-95"><ChevronLeft /></Button>
+          <Button variant="outline" size="icon" onClick={() => scroll(1)} aria-label="Next program" className="h-11 w-11 rounded-full border-primary/50 text-primary active:scale-95"><ChevronRight /></Button>
         </div>
       </div>
     </section>
